@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import ndarray from 'ndarray';
 import ops from 'ndarray-ops';
-import translate from 'moji-translate';
+import { translate } from '../../utils/emoji';
 
 import imagenetData from './imagenet';
 
@@ -89,7 +89,7 @@ export default class EmojiFinder extends Component {
       this.setState((prevState) => ({
         ...prevState,
         label: bestResult,
-        emoji: translate.translate(bestResult, true),
+        emoji: translate(bestResult, true),
       }));
     });
   }
