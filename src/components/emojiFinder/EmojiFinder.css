@@ -1,0 +1,5 @@
+.resultContainer {
+  position: absolute;
+  bottom: 30px;
+  transform: translate(-50%);
+}

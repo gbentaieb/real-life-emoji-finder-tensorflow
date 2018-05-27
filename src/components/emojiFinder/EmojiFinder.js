@@ -6,7 +6,7 @@ import translate from 'moji-translate';
 
 import imagenetData from './imagenet';
 
-import LabelDisplayer from '../labelDisplayer/LabelDisplayer';
+import EmojiDisplayer from '../emojiDisplayer/EmojiDisplayer';
 
 import './EmojiFinder.css';
 
@@ -33,8 +33,6 @@ export default class EmojiFinder extends Component {
 
   componentDidMount() {
     if (this.props.isVisible && this.props.videoElement) this.startSearching();
-
-    document.querySelector('.test').appendChild(this.canvas);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -83,16 +81,15 @@ export default class EmojiFinder extends Component {
       data.forEach((elt, index) => {
         if (bestProb < elt) {
           bestProb = elt;
-          bestResult = imagenetData[index][1].replace('_', ' ');
+          const result = imagenetData[index][1].split('_');
+          bestResult = result[result.length - 1];
         }
-      })
-
-      console.log(bestResult);
+      });
 
       this.setState((prevState) => ({
         ...prevState,
         label: bestResult,
-        emoji: translate.translate(bestResult),
+        emoji: translate.translate(bestResult, true),
       }));
     });
   }
@@ -100,14 +97,9 @@ export default class EmojiFinder extends Component {
   render() {
     return (
       <div>
-        <div className='test'>
-        </div>
         { this.props.isVisible &&
           <div className='resultContainer'>
-            <LabelDisplayer label={this.state.label}/>
-            {/* { this.state.emoji &&
-              <EmojiDisplayer />
-            } */}
+            <EmojiDisplayer emoji={this.state.emoji}/>
           </div>
         }
       </div>
