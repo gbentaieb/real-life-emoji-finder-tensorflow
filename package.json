@@ -1,10 +1,12 @@
 {
   "name": "real-life-emoji-finder-tensorflow",
+  "homepage": "http://gbentaieb.github.io/real-life-emoji-finder-tensorflow",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@tensorflow/tfjs": "^0.10.3",
     "emojilib": "^2.2.12",
+    "gh-pages": "^1.1.0",
     "ndarray": "^1.0.18",
     "ndarray-ops": "^1.2.2",
     "react": "^16.3.2",
@@ -15,6 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
