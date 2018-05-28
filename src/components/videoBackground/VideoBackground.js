@@ -7,7 +7,7 @@ export default class VideoBackground extends Component {
     return (
       <div className='videoElementContainer'>
         <div className='videoElementWrapper'>
-          <video autoPlay muted className='videoElement' ref={(elt => this.videoElement = elt)}/>
+          <video autoPlay muted playsInline className='videoElement' ref={(elt => this.videoElement = elt)}/>
         </div>
       </div>
     )

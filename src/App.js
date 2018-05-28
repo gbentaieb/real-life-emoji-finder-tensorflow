@@ -15,7 +15,7 @@ class App extends Component {
 
   async requireMediaAccess() {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: 'environment' } });
       this.videoBackground.videoElement.srcObject = stream;
       this.setState((prevState) => ({ ...prevState, cameraOpened: true }))
     } catch (e) {
